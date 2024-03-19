@@ -18,6 +18,6 @@ eat_hallabong = int(input("섭취한 한라봉의 양을 기입하시오(100g �
 eat_strawberry = int(input("섭취한 딸기의 양을 기입하시오(100g 단위)"))
 eat_banana = int(input("섭취한 바나나의 양을 기입하시오(100g 단위)"))
 
-total_calories = calculate_calories(calories, eat_orange, eat_strawberry, eat_banana)
+total_calories = calculate_calories(calories, eat_hallabong, eat_strawberry, eat_banana)
 
 print("총 섭취 칼로리: {}kcal".format(total_calories))
