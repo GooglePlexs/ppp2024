@@ -14,12 +14,12 @@ def length(radius):
 def area(radius):
     return math.pi * math.pow(radius,2) 
 
-choice = menu()
+choice_fianl = menu()
 
-if choice == 1:
+if choice_fianl == 1:
     radius = float(input("원의 반지름을 입력하세요: "))
     print("원의 길이:{:.1f}".format(length(radius)))
-elif choice == 2:
+elif choice_fianl == 2:
     radius = float(input("원의 반지름을 입력하세요: "))
     print("원의 면적:{:.2f}".format(area(radius)))
 else:
