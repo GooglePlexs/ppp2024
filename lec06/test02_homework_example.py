@@ -25,7 +25,7 @@ def read_tmin(filename):
 
 
 ###
-def read_weather(filename, col_idx):
+def read_col(filename, col_idx):
 
     results = []
     with open(filename) as f:
@@ -41,8 +41,8 @@ def read_weather(filename, col_idx):
 
 def main():
     ##
-    tmax = read_tmax("lec06/weather(146)_2022-2022.csv")
-    tmin = read_tmin("lec06/weather(146)_2022-2022.csv")
+    # tmax = read_tmax("lec06/weather(146)_2022-2022.csv")
+    # tmin = read_tmin("lec06/weather(146)_2022-2022.csv")
 
     ### 같은 코드지만 인덱스만 다르기에 가능함 (다르게 기능함)
     tmax = read_col("lec06/weather(146)_2022-2022.csv" , 3)
