@@ -11,82 +11,26 @@ def read_col(filename, col_name):
 
     return dataset
 
-def count_rainday(rainfall):
-  
-  return sum([1 if x >= 5 else 0 for x in rainfall])
 
-
-def longest_rainday(rainfall):
-  
-  rain_event = []
-
-  # 각 객체에 숫자 부여 0,1,2,3(일차)
-
-  prev_rain_count = 0
-  for rain in rainfall:
-    if rain ==0:
-      if prev_rain_count > 0:  
-        rain_event.append(prev_rain_count) 
-      prev_rain_count = 0
-    else:
-      prev_rain_count += 1
-  
-  return max(rain_event) 
-
-
-def max_rainfall_event(rainfall):
-  
-  rain_event = []
-
-  prev_rain = 0
-  prev_rain_count = 0
-  for rain in rainfall:
-    if rain ==0:
-      if prev_rain_count > 0:  
-        rain_event.append(prev_rain) 
-      prev_rain = 0
-      prev_rain_count = 0
-    else:
-      prev_rain_count += 1
-      prev_rain += rain
-  
-  return max(rain_event) 
-
-
-def top_rank(values, limit):
-  # return sorted(values)[-limit:] # 3,2,1 등
-  # return sorted(values)[-limit:][::-1] # 1,2,3 등 
-  return sorted(values, reverse = True)[:limit] # 1,2,3 등
-
-
-def sumifs(rainfall, months, selected):
-    total = 0
-    for rain, month in zip(rainfall, months):
-        if month in selected:
-            total += rain
-    return total
-
-def get_year_ifs(values, conditions, criteria):
-    return [rain for rain, year in zip(values, conditions) if year == criteria]
-
-
-def read_col_int(weather_filename, col_name, year): # 이거를 년만 아니라 년,월,일 로 바꾸기 test02 참조
+def read_col_int(weather_filename):
     dataset = []
     with open(weather_filename) as f:
         lines = f.readlines()
         header = [x.strip() for x in lines[0].split(",")]
-        col_idx = header.index(col_name)
+        print(header) #???
         for line in lines[1:]:
             tokens = line.split(",")
-            y = int(tokens[0])
-            if y == year:
-                dataset.append(float(tokens[col_idx]))
+            years = int(tokens[0])
+            months = int(tokens[1])
+            days = int(tokens[2])
+            dataset.append([years, months, days])
     return dataset
+
 
 
 def main():
 
-    weather_filename = "lec07/weather(146)_2022-2022.csv" # 파일이 변경되었을 때 수정을 최소화 할 수 있다
+    weather_filename = "hw11/weather(146)_2022-2022.csv" # 파일이 변경되었을 때 수정을 최소화 할 수 있다
     tavg = read_col(weather_filename , "tavg")
     tmax = read_col(weather_filename , "tmax")
     rainfall = read_col(weather_filename , "rainfall")
