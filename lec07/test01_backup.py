@@ -69,8 +69,7 @@ def sumifs(rainfall, months, selected):
 def get_year_ifs(values, conditions, criteria):
     return [rain for rain, year in zip(values, conditions) if year == criteria]
 
-
-def read_col_int(weather_filename, col_name, year): # 이거를 년만 아니라 년,월,일 로 바꾸기 test02 참조
+def read_col_year(weather_filename, col_name, year):
     dataset = []
     with open(weather_filename) as f:
         lines = f.readlines()
@@ -86,7 +85,7 @@ def read_col_int(weather_filename, col_name, year): # 이거를 년만 아니라
 
 def main():
 
-    weather_filename = "lec07/weather(146)_2022-2022.csv" # 파일이 변경되었을 때 수정을 최소화 할 수 있다
+    weather_filename = "hw11/weather(146)_2022-2022.csv" # 파일이 변경되었을 때 수정을 최소화 할 수 있다
     tavg = read_col(weather_filename , "tavg")
     tmax = read_col(weather_filename , "tmax")
     rainfall = read_col(weather_filename , "rainfall")
@@ -95,6 +94,7 @@ def main():
     months = [int(x) for x in months]
     summer_rainfall = sumifs(rainfall, months, selected=[6, 7, 8])
 
+    
 
 
 
@@ -116,8 +116,8 @@ def main():
 
 
     weather_filename_wide = "hw11/weather(146)_2001-2022.csv"
-    rainfall_all = read_col_int(weather_filename_wide, "rainfall", 2021)
-    rainfall_all += read_col_int(weather_filename_wide, "rainfall", 2022)  # 2021년과 2022년 강수량 합산
+    rainfall_all = read_col_year(weather_filename_wide, "rainfall", 2021)
+    rainfall_all += read_col_year(weather_filename_wide, "rainfall", 2022)  # 2021년과 2022년 강수량 합산
     # 5페이지 2번 2021년과 2022년의 총 강수량
     print(f"2021년과 2022년 총 강수량은 {sum(rainfall_all):.1f}mm 입니다.")
     
