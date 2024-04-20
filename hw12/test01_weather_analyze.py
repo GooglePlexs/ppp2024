@@ -2,7 +2,7 @@ def max_temp_diff(filename):
 
     max_temp_diff = {}
 
-    with open(filename, 'r') as f:
+    with open(filename) as f:
         lines = f.readlines()
         for line in lines[1:]:
             tokens = line.split(",")
@@ -18,6 +18,7 @@ def max_temp_diff(filename):
 
 
 def cal_temperature(filename):
+
     cal_temp = {}  
 
     with open(filename) as f:
@@ -26,9 +27,9 @@ def cal_temperature(filename):
             tokens = line.split(",")
             year = int(tokens[0])
             month = int(tokens[1])
-            tavg = float(tokens[4])  # Assuming average temperature (you can adjust this based on your data)
+            tavg = float(tokens[4])  
 
-            if 5 <= month <= 9:  # Consider only May to September
+            if 5 <= month <= 9:  
                 if year in cal_temp:
                     cal_temp[year] += tavg
                 else:
