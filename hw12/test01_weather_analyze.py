@@ -45,7 +45,6 @@ if __name__ == '__main__':
     for year, (max_diff, date) in max_temp_diffs_years.items():
         print(f"{year}년의 최대일교차가 발생한 날짜는 {date}이며 {max_diff:.1f}°C 입니다")
 
-    
     # 2번 5월부터 9월까지의 적산온도
     for year, temp in sorted(accumulated_temperatures.items()):
         print(f"{year}년의 5월부터 9월까지의 적산온도는 {temp:.1f}입니다.")
